@@ -18,8 +18,13 @@ Contents:
    ssh-server	      
    lighttpd
    service-disable
-   
+   ttyusb0-permission
+   python3-pip
+   default-editor
+   pyenv
 
+      
+   
 Indices and tables
 ==================
 
