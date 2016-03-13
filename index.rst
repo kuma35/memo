@@ -22,8 +22,8 @@ Contents:
    python3-pip
    default-editor
    pyenv
-
-      
+   ctrl-nocaps
+     
    
 Indices and tables
 ==================
