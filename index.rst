@@ -23,6 +23,7 @@ Contents:
    default-editor
    pyenv
    ctrl-nocaps
+   power-management	      
      
    
 Indices and tables
