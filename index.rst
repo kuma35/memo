@@ -24,7 +24,8 @@ Contents:
    pyenv
    ctrl-nocaps
    power-management	      
-     
+   readthedocs
+
    
 Indices and tables
 ==================
