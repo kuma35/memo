@@ -25,8 +25,11 @@ Contents:
    ctrl-nocaps
    power-management	      
    readthedocs
+   fix-devicename
+   mjpg-streamer
+   startx
 
-   
+
 Indices and tables
 ==================
 
