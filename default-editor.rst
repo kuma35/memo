@@ -1,6 +1,6 @@
 .. -*- coding: utf-8; mode: rst; -*-
 
-==========================
+
 デフォルトのエディタを変更
 ==========================
 
@@ -13,9 +13,9 @@
 
 | update-alternatives --get-selections
 
-参考
-....
-
-http://c4se.hatenablog.com/entry/20111007/1317988362
+.. note::
+   参考
+   
+   http://c4se.hatenablog.com/entry/20111007/1317988362
 
 

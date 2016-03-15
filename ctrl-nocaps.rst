@@ -1,6 +1,6 @@
 .. -*- coding: utf-8; mode: rst; -*-
 
-======================================
+
 CAPSキーをCTRLキーにする(Ubuntu 15.10)
 ======================================
 
@@ -22,10 +22,10 @@ Caps LockキーをCtrlキーに割り当てる(元々のCtrlキーはそのま�
 
 | dconf write /org/gnome/desktop/input-sources/xkb-options "['ctrl:nocaps']"
 
-参考
-....
-
-http://l-w-i.net/t/ubuntu/key_002.txt
+.. note::
+   参考
+   
+   http://l-w-i.net/t/ubuntu/key_002.txt
 
 
 CAPSキーをCTRLキーにする(Ubuntu 15.10)(console)
@@ -39,9 +39,9 @@ CAPSキーをCTRLキーにする(Ubuntu 15.10)(console)
 
 変更を適用
 
-% sudo dpkg-reconfigure -phigh console-setup
+| $ sudo dpkg-reconfigure -phigh console-setup
 
-参考
-....
-
-http://lambdalisue.hatenablog.com/entry/2013/09/27/212118
+.. note::
+   参考
+   
+   http://lambdalisue.hatenablog.com/entry/2013/09/27/212118

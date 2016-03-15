@@ -1,6 +1,6 @@
 .. -*- coding: utf-8; mode: rst; -*-
 
-========   
+
 電源管理
 ========
 
@@ -11,11 +11,10 @@
 
 | HandleLidSwitch=ignore
 
-参考
-....
-
-http://qiita.com/tukiyo3/items/9db97f9ffea8a26b364b
-
+.. note::
+   参考
+   
+   http://qiita.com/tukiyo3/items/9db97f9ffea8a26b364b
 
 サスペンドキーとハイバネーションキーを無効にする
 ------------------------------------------------
@@ -33,7 +32,7 @@ HandleHibernateKey
 | HandleSuspendKey=ignore
 | HandleHibernateKey=ignore
 
-参考
-....
-
-https://wiki.archlinuxjp.org/index.php/%E9%9B%BB%E6%BA%90%E7%AE%A1%E7%90%86
+.. note::
+   参考
+   
+   https://wiki.archlinuxjp.org/index.php/%E9%9B%BB%E6%BA%90%E7%AE%A1%E7%90%86

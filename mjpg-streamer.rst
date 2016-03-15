@@ -1,6 +1,6 @@
 .. -*- coding: utf-8; mode: rst; -*-
 
-=============
+
 mjpg-streamer
 =============
 
@@ -28,7 +28,7 @@ make (installしない)
 | $ ./mjpg_streamer -i "./input_uvc.so -d /dev/video1 -y -r 1920x1080 -f 1" -o "./output_http.so -w www"
 
 
-参考
-....
-
-http://www.hiramine.com/physicalcomputing/raspberrypi/webcamstreaming.html
+.. note::
+   参考
+   
+   http://www.hiramine.com/physicalcomputing/raspberrypi/webcamstreaming.html
