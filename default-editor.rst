@@ -4,18 +4,22 @@
 デフォルトのエディタを変更
 ==========================
 
-(Ubuntu 15.10)
+(Ubuntu 15.10 i386)
 
-| sudo update-alternatives --config editor
+.. code-block:: bash
+
+   $ sudo update-alternatives --config editor
 
 ちなみに、update-alternativesで設定されているグループがどれだけ
 あるか知りたいときは
 
-| update-alternatives --get-selections
+.. code-block:: bash
 
-.. note::
-   参考
-   
-   http://c4se.hatenablog.com/entry/20111007/1317988362
+   $ update-alternatives --get-selections
+
+参考
+....
+
+http://c4se.hatenablog.com/entry/20111007/1317988362
 
 

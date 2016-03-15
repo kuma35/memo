@@ -9,7 +9,7 @@ pyenv on Ubuntu 15.10 i386
 
 | pyenv install 3.5.1
 
-.. note::
-   参考
-   
-   http://qiita.com/Kodaira\_/items/feadfef9add468e3a85b
+参考
+....
+
+http://qiita.com/Kodaira\_/items/feadfef9add468e3a85b

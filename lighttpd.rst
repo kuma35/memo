@@ -22,4 +22,6 @@ lighttpdインストール
 
 on Ubuntu Linux 15.10 i386
 
-| sudo apt-get install lighttpd
+.. code-block:: bash
+
+   $ sudo apt-get install lighttpd

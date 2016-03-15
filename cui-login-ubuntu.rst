@@ -14,25 +14,24 @@ Ubuntu Linux を CUI ログインに
 
 GRUBでlinux...の行のroの後ろ辺りに systemd.unit=multi-user.target を追加して起動。
 
-.. note::
-   参考
-   
-   Ubuntu 15.04 を GRUBメニューから CUI で起動する方法(防備録)
-   
-   http://qiita.com/ikwzm/items/5514b0fe9a8728e8aecb
+参考
+....
 
+Ubuntu 15.04 を GRUBメニューから CUI で起動する方法(防備録)
+
+http://qiita.com/ikwzm/items/5514b0fe9a8728e8aecb
 
 正常にログインできているとき
 ----------------------------
 
-| systemclt get-default
+.. code-block:: bash
 
-| sudo systemctl set-default multi-user.target 
+   $ systemclt get-default
+   $ sudo systemctl set-default multi-user.target 
 
+参考
+....
 
-.. note::
-   参考
-   
-   systemd ターゲットでの作業
+systemd ターゲットでの作業
 
-   https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Targets.html
+https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Targets.html

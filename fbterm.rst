@@ -6,52 +6,61 @@
 コンソールで日本語表示
 ======================
 
-videoグループに属してないと使えないので。
-| sudo adduser <<username>> video
-例
-| sudo adduser hideo video
+videoグループに属してないと使えないので,まずadduserして、
+一旦ログオフ、ログオン(一旦ロフオフしないとadduserは反映されない)
 
-| apt-get install fbterm
-| apt-get install unifont
-| LANG=C
-| fbterm -s 16
-| LANG=ja_JP.UTF-8
+.. code-block:: bash
+
+   $ sudo adduser <<username>> video
+
+インストール。
+
+.. code-block:: bash
+
+   $ apt-get install fbterm unifont
+   $ LANG=C
+   $ fbterm -s 16
+   $ LANG=ja_JP.UTF-8
 
 LANG=Cしてからfbterm立ち上げると文字が欠けない…なんで？
 
-| sudo chown <<username>>:<<group>> ~/.fbtermrc
+.. code-block:: bash
 
-.. note::
-   参考
+   $ sudo chown <<username>>:<<group>> ~/.fbtermrc
+
+参考
+....
+
+fbterm を使う（Ubuntu 13.10）
    
-   fbterm を使う（Ubuntu 13.10）
+http://pulpdust.org/item/1702
    
-   http://pulpdust.org/item/1702
+fbtermのインストール・設定及びその他まとめ
    
-   fbtermのインストール・設定及びその他まとめ
-   
-   https://banken07.wordpress.com/2013/02/19/fbterm%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%BB%E8%A8%AD%E5%AE%9A%E5%8F%8A%E3%81%B3%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%BE%E3%81%A8%E3%82%81/
+https://banken07.wordpress.com/2013/02/19/fbterm%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%BB%E8%A8%AD%E5%AE%9A%E5%8F%8A%E3%81%B3%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%BE%E3%81%A8%E3%82%81/
 
 コンソールでCaps LockキーをCtrlにする
 -------------------------------------
 
-| CapsLockをCtrlにするまとめ
-| http://lambdalisue.hatenablog.com/entry/2013/09/27/212118
+/etc/default/keyborad の
 
-の、「console-setupを利用した方法」で行けた。
-
-| /etc/default/keyborad
-
-の
-
-| XKBOPTIONS=""
+	XKBOPTIONS=""
 
 を
 
-| XKBOPTIONS="ctrl:nocaps"
+	XKBOPTIONS="ctrl:nocaps" にして、
 
-にして、
+.. code-block:: bash
 
-| sudo dpkg-reconfigure -phigh console-setup
+   $ sudo dpkg-reconfigure -phigh console-setup
 
-で行けた。
+でOK。
+
+参考
+....
+
+CapsLockをCtrlにするまとめ
+
+http://lambdalisue.hatenablog.com/entry/2013/09/27/212118
+
+の、「console-setupを利用した方法」参照。

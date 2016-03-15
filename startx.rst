@@ -4,7 +4,9 @@
 startx
 ======
 
-| sudo systemctl start lightdm
+.. code-block:: bash
+
+   $ sudo systemctl start lightdm
 
 最近は、こうやるそうである。
 

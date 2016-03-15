@@ -4,9 +4,11 @@
 ユーザに/ttyUSB0の書き込み権限を付与
 ====================================
 
-ubuntu 15.10 i386
+(ubuntu 15.10 i386)ユーザhideoをdialoutグループに追加する。
 
-| sudo adduser <<user>> dialout
+.. code-block:: bash
+
+   $ sudo adduser hideo dialout
 
 ログインしなおす。
 ログインしなおさないと反映されないので注意！！

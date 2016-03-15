@@ -4,31 +4,36 @@
 mjpg-streamer
 =============
 
-| sudo apt-get install subversion libjpeg-dev imagemagick
+.. code-block:: bash
 
-最新版をsvnリポジトリから取得(今回は$HOMEに直接配置)
+   $ sudo apt-get install subversion libjpeg-dev imagemagick
 
-| $ cd
-| $ svn co https://svn.code.sf.net/p/mjpg-streamer/code/mjpg-streamer mjpg-streamer
+最新版をsvnリポジトリから取得(今回は$HOMEに直接配置)。
 
-make (installしない)
+.. code-block:: bash
 
-| $ cd ~/mjpg-streamer
-| $ make
+   $ cd
+   $ svn co https://svn.code.sf.net/p/mjpg-streamer/code/mjpg-streamer mjpg-streamer
+   $ cd ~/mjpg-streamer
+   $ make
 
-このままの権限で使い続けるのでインストール(sudo make install)はしない。
+.. note::
 
+   このままの権限で使い続けるのでインストール(sudo make install)はしない。
 
-| $ sudo gpasswd --add <<username>> video
+.. code-block:: bash
+   
+   $ sudo gpasswd --add hideo video
 
-ログアウト、ログインして反映する
+ログアウト、ログインして反映する。
 
 動作確認
 
-| $ ./mjpg_streamer -i "./input_uvc.so -d /dev/video1 -y -r 1920x1080 -f 1" -o "./output_http.so -w www"
+.. code-block:: bash
 
+   $ ./mjpg_streamer -i "./input_uvc.so -d /dev/video1 -y -r 1920x1080 -f 1" -o "./output_http.so -w www"
 
-.. note::
-   参考
-   
-   http://www.hiramine.com/physicalcomputing/raspberrypi/webcamstreaming.html
+参考
+....
+
+http://www.hiramine.com/physicalcomputing/raspberrypi/webcamstreaming.html

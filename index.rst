@@ -10,7 +10,7 @@ Welcome to kuma35's memo
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    intro
    cui-login-ubuntu

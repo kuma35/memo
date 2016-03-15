@@ -4,7 +4,8 @@
 Python3用pip
 ============
 
-| sudo apt-get install python3-pip
+.. code-block:: bash
 
-| pip3 install pyserial
+   $ sudo apt-get install python3-pip
+   $ pip3 install pyserial
 
