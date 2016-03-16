@@ -28,7 +28,8 @@ Contents:
    fix-devicename
    mjpg-streamer
    startx
-
+   cmdlines
+    
 
 Indices and tables
 ==================
