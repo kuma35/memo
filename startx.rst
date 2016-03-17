@@ -12,3 +12,12 @@ startx
 
 startx.sh もゴリゴリカスタマイズすれば可能…
 
+X停止
+=====
+
+.. code-block:: bash
+
+   $ sudo systemctl stop lightdm
+
+で、できたけど、これが正式な作法なのかどうかは不明。
+   
