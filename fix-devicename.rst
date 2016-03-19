@@ -22,8 +22,8 @@ ATTRS{serial}は以下のコマンドで調べた。
 
 /etc/udev/rules.d/ に 62-ft485r.rules を作成。
 
-  | # for USB-TTL/485 convertor FT-UBF-TTL485
-  | ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="A7039N11",KERNEL=="ttyUSB*",SYMLINK+="ttyFT485R"
+    # for USB-TTL/485 convertor FT-UBF-TTL485
+    ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="A7039N11",KERNEL=="ttyUSB*",SYMLINK+="ttyFT485R"
 
 参考
 ....
@@ -37,8 +37,8 @@ USB-シリアル変換モジュール FT232RL [#]_
 
 /etc/udev/rules.d/ に 62-ft232r.rules を作成。
 
-    | # for USB-TTL/232 convertor FT232RL
-    | ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="AH01JKEI",KERNEL=="ttyUSB*",SYMLINK+="ttyFT232R"
+    # for USB-TTL/232 convertor FT232RL
+    ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="AH01JKEI",KERNEL=="ttyUSB*",SYMLINK+="ttyFT232R"
 
 .. rubric:: Footnotes
 
