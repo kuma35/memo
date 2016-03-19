@@ -33,6 +33,26 @@ mjpg-streamer
 
    $ ./mjpg_streamer -i "./input_uvc.so -d /dev/video1 -y -r 1920x1080 -f 1" -o "./output_http.so -w www"
 
+設定例
+------
+
+Webカメラ用サーバからport8080で送出し、apache2のリバースプロキシで /cam2 に見せる。
+
+Webカメラ用サーバ(192.168.1.2)
+
+.. code-block:: bash
+
+   $ ./mjpg_streamer -i "./input_uvc.so -d /dev/video1 -r 1920x1080 -f 1 -y -n" -o "./output_http.so -p 8080 -w www"
+
+Webサーバ(192.168.1.6) proxy.conf内で...
+   
+.. code-block:: apacheconf
+
+   ProxyPass /cam2 http://192.168.1.2:808
+   ProxyPassReverse /cam2 http://192.168.1.2:8080
+
+http://192.168.1.6/cam2 にアクセスすると mjpegで再生される。
+ 
 参考
 ....
 
