@@ -51,8 +51,18 @@ Webサーバ(192.168.1.6) proxy.conf内で...
    ProxyPass /cam2 http://192.168.1.2:808
    ProxyPassReverse /cam2 http://192.168.1.2:8080
 
-http://192.168.1.6/cam2 にアクセスすると mjpegで再生される。
- 
+   http://192.168.1.6/cam2 にアクセスすると mjpegで再生される。
+
+デバイス名固定
+--------------
+
+mjpg-streamerはデバイス名へのシンボリックリンクを辿れないようなので、以下のようにrealpathコマンドを介して利用する。
+なお、固定方法そのものについては :doc:`fix-devicename` を参照してください。
+
+.. code-block:: bash
+
+   $ ./mjpg_streamer -i "./input_uvc.so -d `realpath /dev/webcam2` -r 1920x1080 -f 1 -y -n" -o "./output_http.so -p 9999 -w www"		
+
 参考
 ....
 

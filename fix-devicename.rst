@@ -12,7 +12,7 @@
 どちらの認識が早いかで /dev/ttyUSB0 と /dev/ttyUSB1 が入れ替わることがあるので固定しておく。
 更にFT232を使ったドングルを2種類繋ぐことがあるのでATTR{serial}で区別。
 
-  | Bus 001 Device 010: ID 0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
+    Bus 001 Device 010: ID 0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
 
 ATTRS{serial}は以下のコマンドで調べた。
 
@@ -22,8 +22,8 @@ ATTRS{serial}は以下のコマンドで調べた。
 
 /etc/udev/rules.d/ に 62-ft485r.rules を作成。
 
-    # for USB-TTL/485 convertor FT-UBF-TTL485
-    ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="A7039N11",KERNEL=="ttyUSB*",SYMLINK+="ttyFT485R"
+    | # for USB-TTL/485 convertor FT-UBF-TTL485
+    | ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="A7039N11",KERNEL=="ttyUSB*",SYMLINK+="ttyFT485R"
 
 参考
 ....
@@ -37,11 +37,37 @@ USB-シリアル変換モジュール FT232RL [#]_
 
 /etc/udev/rules.d/ に 62-ft232r.rules を作成。
 
-    # for USB-TTL/232 convertor FT232RL
-    ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="AH01JKEI",KERNEL=="ttyUSB*",SYMLINK+="ttyFT232R"
+    | # for USB-TTL/232 convertor FT232RL
+    | ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="AH01JKEI",KERNEL=="ttyUSB*",SYMLINK+="ttyFT232R"
+
+ミニマイコンモジュール [N328P] [#]_
+-----------------------------------
+
+.. ブレッドボード上で使う事を想定したミニマイコンモジュール、Atmega328P/16MHzクリスタル/CH340G搭載、arduino NANOと互換、動作電源：5V
+
+Arduino nano互換
+
+    Bus 001 Device 019: ID 1a86:7523 QinHeng Electronics HL-340 USB-Serial adapter
+
+/etc/udev/rules.d/ に 62-arduino-nano.rules を作成
+    
+    | # for Arduino nano compatible N328P
+    | ATTRS{idVendor}=="1a86",ATTRS{idProduct}=="7523",KERNEL=="ttyUSB*",SYMLINK+="ttyNANO%n"
+
+マイクロソフト フルHD Webカメラ LifeCam Studio Q2F-00020
+--------------------------------------------------------
+
+mjpg-streamerではシンボリックリンクを認識しないので、識別用のみに使用し、realpathコマンドで得たパスを与える。
+
+    Bus 001 Device 008: ID 045e:0772 Microsoft Corp. LifeCam Studio
+
+/etc/udev/rules.d/ に 63-mslifecam.rules を作成。
+
+    | # for MS LifeCam Studio Q2F-00020
+    | ATTRS{idVendor}=="045e",ATTRS{idProduct}=="0772",KERNEL=="video*",SYMLINK+="webcam2"
 
 .. rubric:: Footnotes
 
 .. [#] aitendo。1,250円(税別)( http://www.aitendo.com/product/10245 ) 2016年3月現在。
 .. [#] 秋月電子 950円(税別)( http://akizukidenshi.com/catalog/g/gK-01977/ ) 2016年3月現在。
-
+.. [#] aitendo。1,250円(税別)( http://www.aitendo.com/product/10700 ) 2016年3月現在。
