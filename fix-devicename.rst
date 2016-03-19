@@ -54,6 +54,18 @@ Arduino nano互換
     | # for Arduino nano compatible N328P
     | ATTRS{idVendor}=="1a86",ATTRS{idProduct}=="7523",KERNEL=="ttyUSB*",SYMLINK+="ttyNANO%n"
 
+マイクロソフト ウェブカメラ LifeCam HD-5000
+-------------------------------------------
+
+mjpg-streamerではシンボリックリンクを認識しないので、識別用のみに使用し、realpathコマンドで得たパスを与える。
+
+    Bus 002 Device 003: ID 045e:076d Microsoft Corp. LifeCam HD-5000
+
+/etc/udev/rules.d/ に 63-ms-hd5000.rules を作成。
+
+    | # for MS LifeCam HD-5000
+    | ATTRS{idVendor}=="045e",ATTRS{idProduct}=="076d",KERNEL=="video*",SYMLINK+="webcam1"
+
 マイクロソフト フルHD Webカメラ LifeCam Studio Q2F-00020
 --------------------------------------------------------
 
