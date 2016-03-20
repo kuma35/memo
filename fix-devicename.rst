@@ -52,7 +52,7 @@ Arduino nano互換
 /etc/udev/rules.d/ に 62-arduino-nano.rules を作成
     
     | # for Arduino nano compatible N328P
-    | ATTRS{idVendor}=="1a86",ATTRS{idProduct}=="7523",KERNEL=="ttyUSB*",SYMLINK+="ttyNANO%n"
+    | ATTRS{idVendor}=="1a86",ATTRS{idProduct}=="7523",KERNEL=="ttyUSB*",SYMLINK+="ttyN328P"
 
 マイクロソフト ウェブカメラ LifeCam HD-5000
 -------------------------------------------
