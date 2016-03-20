@@ -51,7 +51,7 @@ Webサーバ(192.168.1.6) proxy.conf内で...
    ProxyPass /cam2 http://192.168.1.2:808
    ProxyPassReverse /cam2 http://192.168.1.2:8080
 
-   http://192.168.1.6/cam2 にアクセスすると mjpegで再生される。
+http://192.168.1.6/cam2 にアクセスすると mjpegで再生される。
 
 デバイス名固定
 --------------
