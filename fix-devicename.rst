@@ -78,6 +78,17 @@ mjpg-streamerではシンボリックリンクを認識しないので、識別�
     | # for MS LifeCam Studio Q2F-00020
     | ATTRS{idVendor}=="045e",ATTRS{idProduct}=="0772",KERNEL=="video*",SYMLINK+="webcam2"
 
+
+USBロケットランチャー
+---------------------
+
+40-rocketlauncher.rules
+
+    | SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ACTION=="add", SYSFS{idVendor}=="1941", SYSFS{idProduct}=="8021", GROUP="plugdev", MODE="0660"
+    | SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ACTION=="add", SYSFS{idVendor}=="0a81", SYSFS{idProduct}=="0701", GROUP="plugdev", MODE="0660"
+    | SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ACTION=="add", SYSFS{idVendor}=="1130", SYSFS{idProduct}=="0202", GROUP="plugdev", MODE="0660"
+
+
 .. rubric:: Footnotes
 
 .. [#] aitendo。1,250円(税別)( http://www.aitendo.com/product/10245 ) 2016年3月現在。
