@@ -14,16 +14,18 @@ Ubuntu15.10MATE(on Raspberry Pi 2 model B)
 
 /lib/systemd/system/x11vnc.service
 
-| [Unit]
-| Description=Start x11vnc at startup.
-| After=multi-user.target
-| 
-| [Service]
-| Type=simple
-| ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.pass -rfbport 5900 -shared
-| 
-| [Install]
-| WantedBy=multi-user.target
+.. code-block:: none
+
+   [Unit]
+   Description=Start x11vnc at startup.
+   After=multi-user.target
+   
+   [Service]
+   Type=simple
+   ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.pass -rfbport 5900 -shared
+   
+   [Install]
+   WantedBy=multi-user.target
 
 .. code-block:: bash
 

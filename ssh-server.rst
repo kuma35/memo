@@ -18,9 +18,11 @@ SSHサーバを建てる
 クライアントでは秘密鍵を指定してsshにアクセス。
 .ssh/configに書いておくと便利。
 
-	| Host 192.168.1.1
-	|         IdentityFile    ~/.ssh/id_rsa.hoge
-	|         User            hideo
+.. code-block:: bash
+
+   Host 192.168.1.1
+   IdentityFile    ~/.ssh/id_rsa.hoge
+   User            hideo
 
 .. code-block:: bash
 	

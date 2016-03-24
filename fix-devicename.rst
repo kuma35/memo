@@ -22,8 +22,10 @@ ATTRS{serial}は以下のコマンドで調べた。
 
 /etc/udev/rules.d/ に 62-ft485r.rules を作成。
 
-    | # for USB-TTL/485 convertor FT-UBF-TTL485
-    | ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="A7039N11",KERNEL=="ttyUSB*",SYMLINK+="ttyFT485R"
+.. code-block:: bash
+
+   # for USB-TTL/485 convertor FT-UBF-TTL485
+   ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="A7039N11",KERNEL=="ttyUSB*",SYMLINK+="ttyFT485R"
 
 参考
 ....
@@ -37,8 +39,10 @@ USB-シリアル変換モジュール FT232RL [#]_
 
 /etc/udev/rules.d/ に 62-ft232r.rules を作成。
 
-    | # for USB-TTL/232 convertor FT232RL
-    | ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="AH01JKEI",KERNEL=="ttyUSB*",SYMLINK+="ttyFT232R"
+.. code-block:: bash
+
+   # for USB-TTL/232 convertor FT232RL
+   ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6001",ATTRS{serial}=="AH01JKEI",KERNEL=="ttyUSB*",SYMLINK+="ttyFT232R"
 
 ミニマイコンモジュール [N328P] [#]_
 -----------------------------------
@@ -51,8 +55,10 @@ Arduino nano互換
 
 /etc/udev/rules.d/ に 62-arduino-nano.rules を作成
     
-    | # for Arduino nano compatible N328P
-    | ATTRS{idVendor}=="1a86",ATTRS{idProduct}=="7523",KERNEL=="ttyUSB*",SYMLINK+="ttyN328P"
+.. code-block:: bash
+
+   # for Arduino nano compatible N328P
+   ATTRS{idVendor}=="1a86",ATTRS{idProduct}=="7523",KERNEL=="ttyUSB*",SYMLINK+="ttyN328P"
 
 マイクロソフト ウェブカメラ LifeCam HD-5000
 -------------------------------------------
@@ -63,8 +69,10 @@ mjpg-streamerではシンボリックリンクを認識しないので、識別�
 
 /etc/udev/rules.d/ に 63-ms-hd5000.rules を作成。
 
-    | # for MS LifeCam HD-5000
-    | ATTRS{idVendor}=="045e",ATTRS{idProduct}=="076d",KERNEL=="video*",SYMLINK+="webcam1"
+.. code-block:: bash
+
+   # for MS LifeCam HD-5000
+   ATTRS{idVendor}=="045e",ATTRS{idProduct}=="076d",KERNEL=="video*",SYMLINK+="webcam1"
 
 マイクロソフト フルHD Webカメラ LifeCam Studio Q2F-00020
 --------------------------------------------------------
@@ -75,8 +83,10 @@ mjpg-streamerではシンボリックリンクを認識しないので、識別�
 
 /etc/udev/rules.d/ に 63-mslifecam.rules を作成。
 
-    | # for MS LifeCam Studio Q2F-00020
-    | ATTRS{idVendor}=="045e",ATTRS{idProduct}=="0772",KERNEL=="video*",SYMLINK+="webcam2"
+.. code-block:: bash
+
+   # for MS LifeCam Studio Q2F-00020
+   ATTRS{idVendor}=="045e",ATTRS{idProduct}=="0772",KERNEL=="video*",SYMLINK+="webcam2"
 
 
 USBロケットランチャー
@@ -84,10 +94,11 @@ USBロケットランチャー
 
 40-rocketlauncher.rules
 
-    | SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ACTION=="add", SYSFS{idVendor}=="1941", SYSFS{idProduct}=="8021", GROUP="plugdev", MODE="0660"
-    | SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ACTION=="add", SYSFS{idVendor}=="0a81", SYSFS{idProduct}=="0701", GROUP="plugdev", MODE="0660"
-    | SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ACTION=="add", SYSFS{idVendor}=="1130", SYSFS{idProduct}=="0202", GROUP="plugdev", MODE="0660"
+.. code-block:: bash
 
+   SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ACTION=="add", SYSFS{idVendor}=="1941", SYSFS{idProduct}=="8021", GROUP="plugdev", MODE="0660"
+   SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ACTION=="add", SYSFS{idVendor}=="0a81", SYSFS{idProduct}=="0701", GROUP="plugdev", MODE="0660"
+   SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ACTION=="add", SYSFS{idVendor}=="1130", SYSFS{idProduct}=="0202", GROUP="plugdev", MODE="0660"
 
 .. rubric:: Footnotes
 
