@@ -29,7 +29,9 @@ Contents:
    mjpg-streamer
    startx
    cmdlines
-    
+   firewall
+   x11vnc
+	      
 
 Indices and tables
 ==================
