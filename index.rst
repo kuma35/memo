@@ -32,6 +32,9 @@ Contents:
    firewall
    x11vnc
    mail-relay-gmail
+   ffmpeg
+   bootstrap
+   beaker
 
 
 Indices and tables
