@@ -53,3 +53,11 @@ test-mail.txt
 
 メーラーなりWebメールなりでメールが届いていれば成功。
 
+mailで送る
+----------
+
+mailを使うにはUbuntu 16.04LTSではaptする必要があった。
+
+.. code-block:: bash
+
+   sudo apt install mailutils
