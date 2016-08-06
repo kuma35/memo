@@ -35,7 +35,8 @@ Contents:
    ffmpeg
    bootstrap
    beaker
-
+   pyvenv
+  
 
 Indices and tables
 ==================
