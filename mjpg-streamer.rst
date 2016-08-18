@@ -8,22 +8,25 @@ mjpg-streamer
 
    $ sudo apt-get install subversion libjpeg-dev imagemagick
 
-最新版をsvnリポジトリから取得(今回は$HOMEに直接配置)。
+最新版をsvnリポジトリから取得。そのままcheckoutすると/usr/bin/へmjpg-stramerのバイナリを書き込もうとするので、ignore-extarnalsオプションで抑止する。
+
 
 .. code-block:: bash
 
    $ cd
-   $ svn co https://svn.code.sf.net/p/mjpg-streamer/code/mjpg-streamer mjpg-streamer
-   $ cd ~/mjpg-streamer
+   $ svn checkout --ignore-externals http://svn.code.sf.net/p/mjpg-streamer/code/ mjpg-streamer-code
+   $ cd ~/mjpg-streamer-code/mjpg-streamer
    $ make
 
 .. note::
 
    このままの権限で使い続けるのでインストール(sudo make install)はしない。
 
+利用するユーザはvideoグループに属している必要があるので追加する。
+   
 .. code-block:: bash
    
-   $ sudo gpasswd --add hideo video
+   $ sudo gpasswd --add <<username>> video
 
 ログアウト、ログインして反映する。
 
