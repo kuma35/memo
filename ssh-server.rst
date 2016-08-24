@@ -6,14 +6,25 @@
 
 SSHサーバを建てる
 =================
+サーバにOpenSSHをインストール。
 
 .. code-block:: bash
 
    $ sudo apt-get install openssh-server
-   $ ssh-keygen -t rsa
-   $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-秘密鍵をクライアントに渡す
+クライアントで共通鍵、秘密鍵生成。ここではclientのマシン名をmeviusとする。
+   
+.. code-block:: bash
+
+   $ ssh-keygen -t rsa -f ~/.ssh/id_rsa.mevius
+
+.ssh に id_rsa.mevius と id_rsa.mevius.pub が出来る。
+   
+秘密鍵をサーバのauthorized_keyに追加。
+
+.. code-block:: bash
+
+   $ cat id_rsa.mevius.pub >> authorized_keys
 
 クライアントでは秘密鍵を指定してsshにアクセス。
 .ssh/configに書いておくと便利。
@@ -21,11 +32,14 @@ SSHサーバを建てる
 .. code-block:: bash
 
    Host 192.168.1.1
-   IdentityFile    ~/.ssh/id_rsa.hoge
+   IdentityFile    ~/.ssh/id_rsa.mevius
    User            hideo
 
 .. code-block:: bash
 	
    $ ssh 192.168.1.1
 
-とすると秘密鍵~/.ssh/id_rsa.hogeを自動的に使う。
+とすると秘密鍵~/.ssh/id_rsa.meviusを自動的に使う。
+
+以後はアクセスするサーバが増える度に手元のid_rsa.mevius.pubをサーバに転送し、authorized_keyへ追加する。
+
