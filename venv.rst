@@ -64,9 +64,15 @@ Ubuntu 16.04LTS(i386)ではpyvenvをインストールする必要があった�
 
 .. code-block:: bash
 
-   alias py3bottle source ${HOME}/work/pyvenv/py3bottle/bin/activate;cd ${HOME}/work/pyvenv/py3bottle
+   alias py3bottle source ${HOME}/work/pyvenv/py3bottle/bin/activate;cd ${VIRTUAL_ENV}
 
 py3bottleと打つと環境を有効化し、当該ディレクトリに移る。
+
+.. code-block:: bash
+
+   cd $VIRTUAL_ENV
+
+当該ディレクトリに移動したい時。
 
 venv無効化
 ----------
