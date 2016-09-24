@@ -36,6 +36,7 @@ Contents:
    bootstrap
    beaker
    venv
+   unittest-logging
 
 
 Indices and tables
