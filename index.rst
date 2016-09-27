@@ -37,6 +37,7 @@ Contents:
    beaker
    venv
    unittest-logging
+   arduino-mk
 
 
 Indices and tables
