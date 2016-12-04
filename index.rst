@@ -38,7 +38,7 @@ Contents:
    venv
    unittest-logging
    arduino-mk
-
+   hole-saw/hole-saw
 
 Indices and tables
 ==================
