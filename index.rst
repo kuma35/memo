@@ -39,6 +39,7 @@ Contents:
    unittest-logging
    arduino-mk
    hole-saw/hole-saw
+   byobu-dircolors
 
 Indices and tables
 ==================
