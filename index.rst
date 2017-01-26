@@ -40,6 +40,7 @@ Contents:
    arduino-mk
    hole-saw/hole-saw
    byobu-dircolors
+   noip2-systemd
 
 Indices and tables
 ==================
