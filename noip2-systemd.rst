@@ -25,11 +25,12 @@ systemd対応
 
 を参考に /lib/systemd/system に noip2.service を作る。
 
+
 .. code-block:: text
 
    [Unit]
    Description=No-IP Dynamic DNS Update Client
-   After=network.target
+   After=network-online.target
    
    [Service]
    Type=forking
