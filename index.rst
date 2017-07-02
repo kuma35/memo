@@ -41,6 +41,7 @@ Contents:
    hole-saw/hole-saw
    byobu-dircolors
    noip2-systemd
+   doll-repair/waist-repair
 
 Indices and tables
 ==================
