@@ -42,6 +42,7 @@ Contents:
    byobu-dircolors
    noip2-systemd
    doll-repair/waist-repair
+   mv_thunderbird
 
 Indices and tables
 ==================
