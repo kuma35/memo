@@ -35,3 +35,11 @@ http://qiita.com/ikwzm/items/5514b0fe9a8728e8aecb
 systemd ターゲットでの作業
 
 https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Targets.html
+
+GUIログインに戻す
+-----------------
+
+.. code-block:: bash
+
+   $ systemclt get-default
+   $ sudo systemctl set-default graphical.target 
