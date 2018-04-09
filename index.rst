@@ -43,6 +43,7 @@ Contents:
    noip2-systemd
    doll-repair/waist-repair
    mv_thunderbird
+   ros/ros
 
 Indices and tables
 ==================
