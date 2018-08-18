@@ -13,6 +13,7 @@ SSHサーバを建てる
    $ sudo apt-get install openssh-server
 
 クライアントで共通鍵、秘密鍵生成。ここではclientのマシン名をmeviusとする。
+既に作成済のものがあればそのまま使う。
    
 .. code-block:: bash
 
@@ -20,10 +21,12 @@ SSHサーバを建てる
 
 .ssh に id_rsa.mevius と id_rsa.mevius.pub が出来る。
    
-秘密鍵をサーバのauthorized_keyに追加。
+公開鍵をサーバのauthorized_keyに追加。
 
 .. code-block:: bash
 
+   $ mkdir ~/.ssh
+   $ cd .ssh
    $ cat id_rsa.mevius.pub >> authorized_keys
 
 クライアントでは秘密鍵を指定してsshにアクセス。
