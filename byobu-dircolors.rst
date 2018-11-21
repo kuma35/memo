@@ -34,7 +34,7 @@ byobuを起動していない状態で
 
 .. code-block:: bash
 
-   dircolors -p > $(HOME)/.byobu/.dircolors
+   dircolors -p > ${HOME}/.byobu/.dircolors
 
 .byobu/promptファイル
 
