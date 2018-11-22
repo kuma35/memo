@@ -48,7 +48,7 @@ byobuを起動していない状態で
 
    [ -r /usr/share/byobu/profiles/bashrc ] && . /usr/share/byobu/profiles/bashrc  #byobu-prompt#
    if [ -x /usr/bin/dircolors ]; then
-     test -r ~/.byobu/.dircolors && eval "$(dircolors -b ~/.byobu/.dircolors)" || eval "$(dircolors -b)"
+     test -r ${HOME}/.byobu/.dircolors && eval "$(dircolors -b ${HOME}~/.byobu/.dircolors)" || eval "$(dircolors -b)"
      alias ls='ls --color=auto'
      #alias dir='dir --color=auto'
      #alias vdir='vdir --color=auto'
