@@ -1,5 +1,7 @@
 .. -*- coding: utf-8; mode: rst; -*-
 
+.. index :: arduino-mk
+
 arduino-mk with Arduino IDE 1.6.12
 ==================================
 
