@@ -1,8 +1,9 @@
 .. -*- coding: utf-8; mode: rst; -*-
 
+.. index:: mjpg-streamer; 2016ver.
 
-mjpg-streamer
-=============
+mjpg-streamer (2016年)
+======================
 
 2016年08月18日
 
