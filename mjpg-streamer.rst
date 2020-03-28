@@ -4,6 +4,8 @@
 mjpg-streamer
 =============
 
+2016年08月18日
+
 .. code-block:: bash
 
    $ sudo apt-get install subversion libjpeg-dev imagemagick

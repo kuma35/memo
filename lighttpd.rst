@@ -20,6 +20,8 @@
 lighttpdインストール
 ====================
 
+2016年03月16日
+
 on Ubuntu Linux 15.10 i386
 
 .. code-block:: bash

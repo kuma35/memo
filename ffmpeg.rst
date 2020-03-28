@@ -3,6 +3,8 @@
 ffmpeg
 ======
 
+2016年03月19日
+
 $ ffmpeg -f video4linux2 -list_formats all -i /dev/video1
 
 ffmpeg version 2.7.6-0ubuntu0.15.10.1 Copyright (c) 2000-2016 the FFmpeg developers

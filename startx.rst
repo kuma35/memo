@@ -4,6 +4,8 @@
 startx
 ======
 
+2016年03月17日
+
 .. code-block:: bash
 
    $ sudo systemctl start lightdm

@@ -4,6 +4,8 @@
 サービス自動起動無効
 ====================
 
+2016年03月16日
+
 .. code-block:: bash
 
    $ sudo systemctl | grep cups

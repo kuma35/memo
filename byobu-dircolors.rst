@@ -3,6 +3,8 @@
 byobuのlsのdircolorsを変更
 ==========================
 
+2018年11月22日
+
 Ubuntu 16.04LTS(32bit)
 
 byobu(backend screen)の中でlsしたときの色を変更する。
