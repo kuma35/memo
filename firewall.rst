@@ -1,5 +1,11 @@
 .. -*- coding: utf-8; mode: rst; -*-
 
+.. index::
+   single: Uncomplicated Firewall
+   single: firewall
+   single: ufw
+   single: ファイヤーウォール
+   
 ufw
 ===
 
