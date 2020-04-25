@@ -27,6 +27,7 @@ Contents:
    readthedocs
    fix-devicename
    mjpg-streamer
+   mjpg-streamer_2020
    startx
    cmdlines
    firewall
@@ -44,6 +45,8 @@ Contents:
    doll-repair/waist-repair
    mv_thunderbird
    ros/ros
+   venvname
+
 
 Indices and tables
 ==================
