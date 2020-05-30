@@ -46,6 +46,7 @@ Contents:
    mv_thunderbird
    ros/ros
    venvname
+   emacs-grep-find-samples
 
 
 Indices and tables
