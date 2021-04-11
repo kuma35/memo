@@ -47,6 +47,7 @@ Contents:
    ros/ros
    venvname
    emacs-grep-find-samples
+   emacs-po-function-void
 
 
 Indices and tables
