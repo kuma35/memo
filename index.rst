@@ -48,6 +48,7 @@ Contents:
    venvname
    emacs-grep-find-samples
    emacs-po-function-void
+   emacs-lisp/emacs-lisp-basics
 
 
 Indices and tables
