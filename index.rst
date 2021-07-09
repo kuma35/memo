@@ -49,6 +49,7 @@ Contents:
    emacs-grep-find-samples
    emacs-po-function-void
    emacs-lisp/emacs-lisp-basics
+   po4a/po4a
 
 
 Indices and tables
