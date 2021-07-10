@@ -80,6 +80,23 @@ po4aをそのまま使う訳ではない
 
 よってpo4a統合コマンド(とpo4a.cfg)は使わずに、個々のコマンドをリッチgettextとして呼び出すのである。
 
+作業環境
+--------
+
+- sudo apt install doxygen libusbでドキュメントを生成するために必要(配布物にはドキュメントは含まれていないため手元で生成する必要有る)
+- sudo apt install libudev-dev autogen.sh実行時に必要
+
+libusbのバイナリをコンパイルしなくても doc/Makefile の実行だけでドキュメントは生成できる。
+
+
+フォルダ構成
+............
+
+- ./ Makefile等
+- source/api-1.0 原文ファイル群(html,js,css)
+- po poファイル群
+- docs/ 訳文書(翻訳を適用したhtml、jsとcssはsourceからコピー)
+
 原文を用意する
 --------------
 
@@ -103,6 +120,8 @@ docディレクトリに入り、(docディレクトリの) Makefile を実行�
    #!/bin/sh
    find ./source/libusb.sourceforge.io/api-1.0/ -name "*.html" -printf "po4a-gettextize --format xhtml --master %p --master-charset utf-8 --copyright-holder \"libusb\" --package-name \"libusb\" --package-version \"0.0\" --po ./po/%f.po\n"
 
+.. _updatepo_script:
+
 原文ファイル追加時用スクリプト
 ..............................
 
@@ -113,7 +132,7 @@ docディレクトリに入り、(docディレクトリの) Makefile を実行�
 いままで存在していなかった functions_vars.html が追加になった時のスクリプト
 
 POヘッダ編集
-............
+------------
 
 生成した全てのPOファイルについて、POヘッダを設定する必要がある。
 設定しないとPOファイルコンパイルやpo4a-updatepo(msgmerge)でエラーになる。
@@ -141,17 +160,78 @@ POヘッダ編集
 - #コマンドでコメント編集にしておまじないを追加 -*- coding: utf-8 -*-
 - Last-Translator Language-Team Language Content-Type を表記の通りとする。
 
-翻訳・生成
-..........
+翻訳
+----
 
 poファイルを編集する。emacs po-modeなど
 
+.. _translate:
+
+訳文書生成
+----------
+
 make html
 
+Makefileの詳細は下記 :ref:`makefile` 参照。
+
+「80％に達していないので…破棄」
+................................
+
+po4a-translateのkeepオプション(--keep)のデフォルトが80に設定されているため。
+`--keep 0` と設定すれば翻訳の進捗に関わらず訳文書を生成するようになる。
+
+.. _updatepo:
+
 原文更新
-........
+--------
 
 make updatepo
 
-なお、原文に新しいファイルが追加された場合、make html でエラーとなるので上記
-「原文ファイル追加時用スクリプト」を参考にpoファイルを追加する。
+Makefileの詳細は下記 :ref:`makefile` 参照。
+
+なお、原文に新しいファイルが追加された場合、make html でエラーとなるので上記 :ref:`updatepo_script` を参考にpoファイルを追加する。
+
+.. _makefile:
+
+Makefile
+--------
+
+:ref:`translate` や :ref:`updatepo` で使うMakefile
+
+.. code-block:: make
+
+   # SRC_DIR = source/libusb.sourceforge.io/api-1.0
+   SRC_DIR = source/api-1.0
+   PO_DIR = po
+   TARGET_DIR = docs
+   
+   SRC_ALL = $(wildcard $(SRC_DIR)/*)
+   
+   SRC_HTML = $(filter %.html,$(SRC_ALL))
+   SRC_OTHER = $(filter-out %.html,$(SRC_ALL))
+   
+   PO_PO = $(wildcard $(PO_DIR)/*.html.po)
+   
+   TARGET_HTML = $(addprefix $(TARGET_DIR)/,$(notdir $(SRC_HTML)))
+   TARGET_OTHER = $(addprefix $(TARGET_DIR)/,$(notdir $(SRC_OTHER)))
+   
+   a_file = $(addsuffix $(3),$(addprefix $(1)/,$(notdir $(basename $(2)))))
+   
+   
+   html: $(TARGET_HTML) $(TARGET_OTHER)
+   
+   updatepo: $(PO_PO)
+   
+   # static pattern
+   $(TARGET_HTML): $(TARGET_DIR)/%.html : $(PO_DIR)/%.html.po
+      po4a-translate -v --format xhtml --master $(call a_file,$(SRC_DIR),$@,.html) --master-charset UTF-8 --po $? --localized $(call a_file,$(TARGET_DIR),$@,.html) --localized-charset UTF-8 --keep 0
+
+   $(TARGET_OTHER): $(TARGET_DIR)/% : $(SRC_DIR)/%
+      cp -v -u $? $@
+
+   $(PO_PO): $(PO_DIR)/%.html.po : $(SRC_DIR)/%.html
+      po4a-updatepo --format xhtml --master $? --master-charset UTF-8 --previous --copyright-holder "libusb" --package-name "libusb" --package-version "1.0" --po $@
+
+   .PHONY: html updatepo
+
+   
