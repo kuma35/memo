@@ -50,6 +50,7 @@ Contents:
    emacs-po-function-void
    emacs-lisp/emacs-lisp-basics
    po4a/po4a
+   kivy_resources
 
 
 Indices and tables

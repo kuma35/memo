@@ -25,7 +25,7 @@ http://qiita.com/ikwzm/items/5514b0fe9a8728e8aecb
 正常にログインできているとき
 ----------------------------
 
-.. code-block:: bash
+.. code-block:: sh
 
    $ systemclt get-default
    $ sudo systemctl set-default multi-user.target 
@@ -40,7 +40,7 @@ https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Sy
 GUIログインに戻す
 -----------------
 
-.. code-block:: bash
+.. code-block:: sh
 
    $ systemclt get-default
    $ sudo systemctl set-default graphical.target 

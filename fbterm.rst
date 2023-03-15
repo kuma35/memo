@@ -11,13 +11,13 @@
 videoグループに属してないと使えないので,まずadduserして、
 一旦ログオフ、ログオン(一旦ロフオフしないとadduserは反映されない)
 
-.. code-block:: bash
+.. code-block:: sh
 
    $ sudo adduser <<username>> video
 
 インストール。
 
-.. code-block:: bash
+.. code-block:: sh
 
    $ apt-get install fbterm unifont
    $ LANG=C
@@ -26,7 +26,7 @@ videoグループに属してないと使えないので,まずadduserして、
 
 LANG=Cしてからfbterm立ち上げると文字が欠けない…なんで？
 
-.. code-block:: bash
+.. code-block:: sh
 
    $ sudo chown <<username>>:<<group>> ~/.fbtermrc
 
@@ -52,7 +52,7 @@ https://banken07.wordpress.com/2013/02/19/fbterm%E3%81%AE%E3%82%A4%E3%83%B3%E3%8
 
 	XKBOPTIONS="ctrl:nocaps" にして、
 
-.. code-block:: bash
+.. code-block:: sh
 
    $ sudo dpkg-reconfigure -phigh console-setup
 
