@@ -51,6 +51,8 @@ Contents:
    emacs-lisp/emacs-lisp-basics
    po4a/po4a
    kivy_resources
+   sed_nested_address
+   toybox
 
 
 Indices and tables

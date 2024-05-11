@@ -5,7 +5,7 @@
 kivy.resources
 ==============
 
-2023年03月02日
+2023年03月16日
 
 kivy.resources.resouce_paths
 ----------------------------
@@ -14,7 +14,7 @@ kivy.resources.resouce_paths
 
 っていうのがこのリストである。
 
-初期値は
+手元で見た値は以下のようになっている(<venv_dir>は /home/hoge/fuga/venv 等)
 
 .. code-block:: python
 
@@ -23,7 +23,7 @@ kivy.resources.resouce_paths
    '<venv_dir>/lib/python3.10/site-packages/kivy',
    '<venv_dir>/lib/python3.10/site-packages/kivy/data/..']
 
-で、ソースは
+で、kivyのソース・コードは
 
 .. code-block:: python
 
@@ -32,7 +32,7 @@ kivy.resources.resouce_paths
    dirname(kivy.__file__),
    join(kivy_data_dir, '..')]
 
-iOS の場合は:   
+iOS の場合のソースコードは
    
 .. code-block:: python
 
@@ -44,8 +44,7 @@ iOS の場合は:
 
 である。
 
-ただし、検索時は `reversed(resource_paths)` するので後ろから前への順番で
-行うことに注意。
+ただし、検索時は `reversed(resource_paths)` するので後ろから前への順番検索されることに注意。
 
 resource_add_path
 -----------------
