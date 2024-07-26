@@ -53,6 +53,7 @@ Contents:
    kivy_resources
    sed_nested_address
    toybox
+   gforth-docs-ja/index
 
 
 Indices and tables
