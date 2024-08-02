@@ -16,3 +16,4 @@ Contents:
 
    bit-try
    cs-stack
+   gforth-el
