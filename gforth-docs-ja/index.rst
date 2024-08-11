@@ -18,3 +18,4 @@ Contents:
    cs-stack
    gforth-el
    literal
+   register
