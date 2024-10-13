@@ -54,6 +54,7 @@ Contents:
    sed_nested_address
    toybox
    gforth-docs-ja/index
+   po4a-cfg
 
 
 Indices and tables
