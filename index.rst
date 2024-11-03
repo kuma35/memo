@@ -55,6 +55,7 @@ Contents:
    toybox
    gforth-docs-ja/index
    po4a-cfg
+   dell-ssd/index
 
 
 Indices and tables

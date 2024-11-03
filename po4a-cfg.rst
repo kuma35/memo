@@ -78,7 +78,7 @@ $lang
    
    [po4a_langs] ja fr
 
-ならｂ
+ならば
 
 .. code-block::
    
