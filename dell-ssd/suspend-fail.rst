@@ -15,7 +15,7 @@
 
 s2idle を止めて deep にします。
 
- /etc/systemd/sleep.conf に以下を追加します。
+ /etc/systemd/sleep.conf に以下を追加し再起動。
 
 .. code::
 
@@ -28,6 +28,8 @@ s2idle を止めて deep にします。
 
    sudo sh -c "echo deep > /sys/power/mem_sleep"
 
+これは、 サスペンドは(成功すれば)何度でもできますが、電源OFFするとこの設定は消えます。
+
 現状を確認するには
 
 .. code::
@@ -35,4 +37,9 @@ s2idle を止めて deep にします。
    $ cat /sys/power/mem_sleep 
    s2idle [deep]
 
-表示されるのが選択可能な一覧で、 [ ] で囲まれている方が現在選択されている方です。
+ここで、 表示されるのが選択可能な一覧で、 [ ] で囲まれている方が現在選択されている方です。
+
+参考
+----
+
+`電源管理/サスペンドとハイバネート <https://wiki.archlinux.jp/index.php/%E9%9B%BB%E6%BA%90%E7%AE%A1%E7%90%86/%E3%82%B5%E3%82%B9%E3%83%9A%E3%83%B3%E3%83%89%E3%81%A8%E3%83%8F%E3%82%A4%E3%83%90%E3%83%8D%E3%83%BC%E3%83%88>`_

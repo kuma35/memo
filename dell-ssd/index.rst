@@ -8,7 +8,7 @@ Dell Inspiron 3268(Ubuntu Linux 24.04LTS)3.5HDD→2.5SSD
 ハードディスクの内容をSSDにコピーしてから
 HDDをSSDに交換して起動します。
 
-DELLなので一癖二癖あります。
+DELL Inspiron 3268 (購入時: 8G RAM, 1T 3.5インチHDD)
 
 Contents:
 
