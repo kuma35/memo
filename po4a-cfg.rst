@@ -57,7 +57,8 @@ doc-po/po4a-cfg/vmgen.texi.cfg
 
 これは原文が ../doc/vmgen.texi で、 ja への翻訳を行い、
 pot ファイルは ./pot/vmgen.texi.pot , po ファイルは ./vmgen.texi.po , 翻訳済ファイルは ../doc-ja/vmgen.texi で、
-文書の形式は texinfo を使うということを示している。
+文書の形式は texinfo を使うということを示している
+(通常は マクロ $lang を使って、言語ごとに異なるフォルダに展開するのだが、 ここでは ja だけなので使ってない)。
 
 $master
 .......

@@ -7,11 +7,34 @@
 
 2024年11月4日
 
+2024年11月6日 加筆
+
 今回のSSD換装が原因かどうかわからないのですけども
 サスペンド後復帰できなくなりました。電源長押しして強制電源OFFして電源ON〜ブートするハメになります。
 
-結論
-----
+ハイバネート禁止
+----------------
+
+2024年11月6日
+
+.. code-block::
+
+   [Sleep]
+   MemorySleepMode=s2idle
+   AllowSuspend=yes
+   AllowHibernation=no
+   AllowSuspendThenHibernate=no
+   AllowHybridSleep=no
+   #SuspendState=mem standby freeze
+   #HibernateMode=platform shutdown
+   #HibernateDelaySec=
+   #SuspendEstimationSec=60min
+
+
+結論…やっぱりアカンわ
+----------------------
+
+2024年11月6日 うーん、やっぱり復旧できなくなるので、これが原因ではないっぽい。元に戻しておく(下記 sleep.confの追加を削除)
 
 s2idle を止めて deep にします。
 
