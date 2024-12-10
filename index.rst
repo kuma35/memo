@@ -56,6 +56,7 @@ Contents:
    gforth-docs-ja/index
    po4a-cfg
    dell-ssd/index
+   git-docs-ja/index
 
 
 Indices and tables
