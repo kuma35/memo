@@ -55,9 +55,10 @@ Contents:
    toybox
    gforth-docs-ja/index
    po4a-cfg
+   po4a-cfg-2
    dell-ssd/index
    git-docs-ja/index
-
+   github-pages-unpublish
 
 Indices and tables
 ==================
