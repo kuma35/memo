@@ -5,11 +5,9 @@
 ちょいとお試しでDocker版を起動してみる
 ======================================
 
-2024年7月27日
+2024年12月20日
 
-(未訳 INSTALL.md )
-
-docker 版。 手元で試したのは Gforth 0.7.9_20240118 でした。
+docker 版。 手元で試したのは Gforth 0.7.9_20241009 でした。
 
 もってくる
 ----------
@@ -24,7 +22,8 @@ docker 版。 手元で試したのは Gforth 0.7.9_20240118 でした。
 
 .. code:: bash
 
-   alias gforthdk="docker run -ti --rm forthy42/gforth"
+   $ docker run -ti --rm forthy42/gforth
+
 
 おまけ
 ------

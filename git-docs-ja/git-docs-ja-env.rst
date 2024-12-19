@@ -5,7 +5,8 @@
 git ドキュメント翻訳環境構築
 ============================
 
-2024年12月14日
+- 更新:2024年12月20日
+- 作成:2024年12月14日
 
 フォルダ構成
 ------------
@@ -201,6 +202,7 @@ Makefile例
    SRC_SUB_DIRS = $(TECHNICAL_DIR) $(RELNOTES_DIR) $(CONFIG_DIR) $(HOWTO_DIR) $(INCLUDES_DIR) $(MERGETOOLS_DIR)
    SRC_INSTALL_TEXT = ../INSTALL
    PO_INSTALL_TEXT = INSTALL.po
+   PO4A_CFG_INSTALL_TEXT = INSTALL.po4cfg
    DST_INSTALL_TEXT = ../docs/$(BRANCH)/INSTALL.txt
    # cmds_txt and mergetools_txt from Documentation/Makefile there are templates. not need translation.
    cmds_txt = cmds-ancillaryinterrogators.txt \
@@ -223,8 +225,16 @@ Makefile例
    PO4A_CFG_FILES = $(SRC_PACKAGE:$(ASCIIDOC_EXT)=$(PO4A_CFG_EXT))
    DST_FILES = $(addprefix $(DST_DIR)/,$(SRC_PACKAGE))
 
-   $(PO4A_CFG_FILES): %$(PO4A_CFG_EXT) : $(SRC_DIR)/%$(ASCIIDOC_EXT)
+   help:
+      @echo "instead, please run from compile.sh"
+
+   .DEFAULT_GOAL := help
+
+   $(PO4A_CFG_FILES): %$(PO4A_CFG_EXT) : $(SEDOUT_DIR)/%$(ASCIIDOC_EXT)
       ./mk-po4a-cfg.sh $< > $@
+
+   $(PO4A_CFG_INSTALL_TEXT): $(SRC_INSTALL_TEXT)
+      ./mk-po4a-cfg-install-text.sh $< $(DST_INSTALL_TEXT) > $@
 
    $(SEDOUT_FILES): $(SEDOUT_DIR)/%$(SEDOUT_EXT) : $(SRC_DIR)/%$(ASCIIDOC_EXT)
       sed -f ./protect-opt-dash.sed < $< > $@
@@ -259,7 +269,7 @@ Makefile例
       find $(DST_DIR) -empty | xargs rmdir
       rsync -av --include "cmds-*.txt" --include "mergetools-*.txt" --exclude "*.txt" $(SRC_DIR)/ $(DST_DIR)
 
-   .PHONEY: ja clean
+   .PHONEY: ja clean help
 
 全体制御用 compile.sh
 ---------------------
@@ -326,4 +336,3 @@ Documentation-po/compile.sh
    ${PROJ}/Documentation-po/restore-htmls.sh
    #
    notify-send -u normal git-docs-ja "compile完了。"
-

@@ -5,10 +5,7 @@
 po4a-updatepo や po4a-translate から po4a + po4a.cfg に移行その2
 ================================================================
 
-2024年12月14日
-
-経緯
-----
+2024年12月15日
 
 :doc:`po4a-cfg` にて hoge.txt → hoge.txt.po のように、 .po 追加
 となる方式で使って見たところ、 make との相性は大変悪かった。
@@ -60,11 +57,10 @@ Documentation-ja/git-am.txt     翻訳済ファイル
 
 .. code-block::
 
-   # generate by ./mk-po4a-cfg.sh 2024年 12月 14日 土曜日 05:35:45 JST
+   # generate by ./mk-po4a-cfg.sh 2024年 12月 15日 日曜日 12:49:38 JST
    [po4a_langs] ja
-   [type: asciidoc] ../Documentation/git-am.txt $lang:../Documentation-ja/git-am.txt
+   [type: asciidoc] ../Documentation-sedout/git-am.txt $lang:../Documentation-ja/git-am.txt
    [po4a_paths] pot/git-am.pot ja:git-am.po
-
 
 - "[po4a_langs]" 和訳のみのため ja 固定。 他言語もある場合は追記。
 - "[type: asciidoc]" ASCIIDOCの文書だから。
@@ -97,11 +93,10 @@ mk-po4a-cfg.sh
    #!/usr/bin/sh
    # mk-po4a-cfg.sh <<src-pathfile(relative)>>
    SRC_FILE=$1
-   BASE_FILE=${SRC_FILE#../Documentation/}
+   BASE_FILE=${SRC_FILE#../Documentation-sedout/}
    DST_FILE=../Documentation-ja/${BASE_FILE}
    BASE_BODY=${BASE_FILE%.txt}
    echo "# generate by $0" `date`
    echo "[po4a_langs] ja"
    echo "[type: asciidoc] ${SRC_FILE} \$lang:${DST_FILE}"
    echo "[po4a_paths] pot/${BASE_BODY}.pot ja:${BASE_BODY}.po"
-
