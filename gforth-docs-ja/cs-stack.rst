@@ -5,15 +5,28 @@
 制御フロー・スタック
 ====================
 
-2024年7月27日
+- 更新:2024年12月20日
+- 作成:2024年7月27日
 
-(gforth) 6.9.6 Arbitrary control structures
+メリット
+--------
+
+知れば制御構造がらみで出てくるエラーの理解が進みます。 初見だと制御構造絡みのエラーは訳わからん
+
+あー、 更にガンバレば独自の制御構造が作れます。
+但し、 たいていの制御構造は既に用意されています…
+
+解説
+----
+
+参照: (gforth) 6.9.6 Arbitrary control structures
+https://kuma35.github.io/gforth-docs-ja/docs-ja-0/gforth/Arbitrary-control-structures.html
 
 制御構造の「コンパイル時」に使用されるのが「制御フロー・スタック」(control-flow stack) です。
 
 gforth の制御フロー・スタックは(定義ごとに)コンパイル時にデーター・スタック上に構築され使用されます。
 
-逆に言うと、コンパイル時のみで制御構造の実行時には存在しません。
+逆に言うと、コンパイル時のみで制御構造の実行時にはの制御フロー・スタックは存在しません。
 
 .. ::
 
@@ -26,13 +39,13 @@ gforth の制御フロー・スタックは(定義ごとに)コンパイル時�
 
 cs-roll, cs-pick, cs-drop は この4つ を 1組扱いして操作します。
 
-# type ( defstart, live-orig, dead-orig, dest, do-dest, scopestart) ( TOS )
+- type ( defstart, live-orig, dead-orig, dest, do-dest, scopestart) ( TOS )
 
-# address (of the branch or the instruction to be branched to) (second)
+- address (of the branch or the instruction to be branched to) (second)
 
-# locals-list (valid at address) (third)
+- locals-list (valid at address) (third)
 
-# stack state address for checking (fourth)
+- stack state address for checking (fourth)
 
 6.9.6.1 Programming Style の例に cs-stack を例示してみましょう。
 これは true IF の時は IF の ... を実行し、更に AGAINに到達しBEGINに戻り、
@@ -65,7 +78,7 @@ IFブロックの中だからといって true IF の時だけ [ 1 CS-ROLL ] が
 IFが条件分岐として機能するのはあくまで実行時です。だんだん混乱してきましたね。訳者もよく混乱しています。
 
 gforth (forth) は 自在変幻にコンパイルと実行が入り交じる(コンパイル自体もワードの「実行」によって行われる)
-という実にわけわからんなんじゃこりゃなので、 そこらへん注意深くじっくり見つめたほうが良いです。
+という実にわけわからんなんじゃこりゃなので、 そこらへん注意深くじっくり見つめましょう。
 
 
 .. code:: forth
@@ -109,16 +122,17 @@ orig
 前方参照のために cs-stack に積まれます。 orig を積む時、当該ワードは手元のアドレスに ダミーの ゼロ を書き込みます。
 そのアドレスを orig の address にセットします。
 
-orig を 消費するワードは、 その address の場所に、 自分の位置のアドレス、 を書き込みます。
+orig を 消費するワードは、 その address の場所に、 orig を 消費するワードの位置のアドレス、 を書き込みます。
 
 これで、 orig を積んだワードから、 orig を消費するワードへ、実行時にジャンプができるようになりました。
 
 dest
 ----
 
-dest を積むワードはその address を orig と同様にセットしますが、 そのアドレスの場所には そのワードのアクションあります。
+dest を積むワードはその address を orig と同様にセットしますが、
+そのアドレスの場所にはdest を積むワードのアクションへのアドレスをセットします。
 これは後から書き換えはされません。
 
-dest を消費するワードは dest から取り出した address を そのワードのジャンプ先としてセットします。
+dest を消費するワードは dest から取り出した address を dest を消費するワードのジャンプ先としてセットします。
 
 これで、 dest を消費するワードから dest を積んだワードへ実行時にジャンプできるようになりました。
