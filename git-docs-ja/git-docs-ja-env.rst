@@ -8,6 +8,15 @@ git ドキュメント翻訳環境構築
 - 更新:2024年12月20日
 - 作成:2024年12月14日
 
+はじめに
+--------
+
+https://github.com/kuma35/git-docs-ja で git の Document/ をオレオレ翻訳しています。
+
+成果物は https://kuma35.github.io/git-docs-ja/ です。
+
+メモとして翻訳環境を書いておきます。
+
 フォルダ構成
 ------------
 
@@ -86,7 +95,9 @@ source は sh では動かなかったのでシェバングは bash にしてく
 po4a.cfg対応(docs-ja-3→docs-ja-4)
 ----------------------------------
 
-:doc:`../po4a-cfg-2` 
+:doc:`../po4a-cfg-2`
+
+なお、手元のバージョンは po4a version 0.69. です。
 
 複数版表示対応(docs-ja-3→docs-ja-4)
 ------------------------------------
@@ -105,11 +116,12 @@ docs/<BRANCH>/hogehoge
 
 元が新しいバージョンになったら、新しいブランチ git-docs-9999 を作って翻訳の方も更新します。
 
-新しいブランチを切るのは翻訳の古い版も残しておきたいからです。
+新しいブランチは一つ前のブランチの先端から作成します。
 
-
-https://github.com/git/git.git から git clone してくる訳ですが、
+さて、 https://github.com/git/git.git から git clone してくる訳ですが、
 その前に、現行の git フォルダを退避します。 後ろの数字は当時のバージョン番号です。
+
+自分でも分かりませんが なぜか そういう運用になってしまっています。
 
 .. code-block:: bash
 
@@ -120,7 +132,7 @@ https://github.com/git/git.git から git clone してくる訳ですが、
 最新版のバイナリを得るために make します。
 ここでは ${HOME}/bin に入れたいので以下のようにします。 他に入れたい場所があれば INSTALL ファイルをご覧ください。
 
-${HOME}/bin の既存のは黙って上書きされるので注意してください。
+${HOME}/bin の既存のがあった場合、黙って上書きされるので注意してください。
 
 .. code-block:: bash
 
@@ -336,3 +348,34 @@ Documentation-po/compile.sh
    ${PROJ}/Documentation-po/restore-htmls.sh
    #
    notify-send -u normal git-docs-ja "compile完了。"
+
+restore-htmls.sh と restore-manpages.sh は両方ともリポジトリの HEAD と 作業ツリー(working tree)を diff して、
+同一内容であれば git restore して更新を無かった事にして git commit した際のコミット量(?)を減らします。
+
+なお restore-htmls.sh については更に、 「更新日付だけが違う」ものも同一内容とみなして git restore しています。
+
+.. code-block:: bash
+
+   git ls-files -m -- "*.html" | while read line; do
+      if test -e ${line} &&
+         git diff --quiet -I"^ [12][0-9][0-9][0-9]-[01][0-9]-[0123][0-9] [012][0-9]:[0-5][0-9]:[0-5][0-9] JST" -I"^<span id=\"revdate\">[12][0-9][0-9][0-9]-[01][0-9]-[0123][0-9]</span>" HEAD -- ${line} &&
+         ! git diff --quiet HEAD -- ${line}
+      then
+         git restore --source HEAD -- ${line}
+      fi
+   done
+
+install-webdoc-only-html.sh でも restore-htmls.sh と同様に同一内容は github pages 用のフォルダ docs へコピーしないようにしています。
+
+.. code-block:: bash
+
+   $DIFF -u -I'^Last updated ' "$T/$h" "$h"
+
+notify-send は Ubuntu Linux (gnome?) でデスクトップにメッセージをポップアップするためのものです。
+   
+くわしくは
+----------
+
+その他くわしくは
+https://github.com/kuma35/git-docs-ja の docs-ja-4 ブランチの Documentation-po フォルダ内をご覧ください。
+上記 Makefile やスクリプトは Document-po/ に入っています。
