@@ -5,7 +5,7 @@
 ちょいとお試しでGNU gforth Docker版を起動してみる
 =================================================
 
-- 更新:2024年12月20日
+- 更新:2024年12月22日
 
 docker 版。 手元で試したのは Gforth 0.7.9_20241009 でした。
 
@@ -38,11 +38,12 @@ bye
    
    出典: docker hub https://hub.docker.com/r/forthy42/gforth
 
+
 .. code-block:: bash
 
    $ cat $(pwd)/test.fs
    .( huhu )
-   $ docker run -ti -v$(pwd):/work forthy42/gforth
+   $ docker run -ti -v$(pwd):/work --name gforthdk forthy42/gforth
    s" /work/test.fs" included huhu ok
    bye
    $
@@ -63,9 +64,9 @@ bye
 
 .. code-block:: bash
 
-   $ docker run -ti -v$(pwd):/work forthy42/gforth
+   $ docker run -ti -v$(pwd):/work --name gforthdk forthy42/gforth
 
-で起動し、 その中で
+で(初回)起動し、 その中で
 
 .. code-block:: forth
 
@@ -74,6 +75,15 @@ bye
 ([ENTER]はエンター・キー押下)と入力すると、 「改行せずに」結果が huhu と出力され、 続けて「改行せずに」 ok と表示されます。
 (改行されないのは gforth の仕様です)
 
+終了は bye
+
+.. note::
+
+   2回目以降の起動は
+
+   .. code-block:: bash
+
+      $ docker start -i gforthdk
 
 画面
 ----
