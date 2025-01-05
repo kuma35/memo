@@ -2,10 +2,39 @@
 
 .. index:: asciidoc, git
 
-AsciiDoc の \`...\` が単語単位に分割される
-==========================================
+git 2.47.1.404.ge66fd72e97 の \`...\` が単語単位に分割される
+============================================================
 
+- 更新:2025年1月6日
 - 作成:2025年1月4日
+
+原因
+----
+
+asciidoc.conf で
+
+.. code-block:: text
+
+   [literal-inlinemacro]
+   {eval:re.sub(r'(&lt;[-a-zA-Z0-9.]+&gt;)', r'<emphasis>\1</emphasis>', re.sub(r'([\[\s|()>]|^|\]|&gt;)(\.?([-a-zA-Z0-9:+=~@,\/_^\$]+\.?)+)',r'\1<literal>\2</literal>', re.sub(r'(\.\.\.?)([^\]$.])', r'<literal>\1</literal>\2', macros.passthroughs[int(attrs['passtext'][1:-1])] if attrs['passtext'][1:-1].isnumeric() else attrs['passtext'][1:-1])))}
+
+   があるためでした。
+
+対応
+----
+
+.. code-block:: text
+
+   doctype-manpage 「以外」だけで効く(つまり doctype-manpage では効かない)ようにしました。
+
+   ifdef::backend-docbook[]
+   ifndef::doctype-manpage[]
+   [literal-inlinemacro]
+   {eval:re.sub(r'(&lt;[-a-zA-Z0-9.]+&gt;)', r'<emphasis>\1</emphasis>', re.sub(r'([\[\s|()>]|^|\]|&gt;)(\.?([-a-zA-Z0-9:+=~@,\/_^\$]+\.?)+)',r'\1<literal>\2</literal>', re.sub(r'(\.\.\.?)([^\]$.])', r'<literal>\1</literal>\2', macros.passthroughs[int(attrs['passtext'][1:-1])] if attrs['passtext'][1:-1].isnumeric() else attrs['passtext'][1:-1])))}
+   endif::doctype-manpage[]
+   endif::backend-docbook[]
+
+下記は不要ですが、 正規表現とか elisp の参考に置いておきます。
 
 現象
 ----
@@ -30,7 +59,7 @@ infoでは 'git' 'version' と表記されてしまいます。
 回避策
 ------
 
-htmlだけを生成する文書については、 はhtmlソース上では分けて表記されていますが見かけは変わらないので対処しません。
+htmlだけを生成する文書については、 htmlソース上では分けて表記されていますが見かけは変わらないので対処しません。
 
 infoも生成する文書について以下の対処を行います。
 
@@ -62,7 +91,7 @@ info 生成しない、 html 文書だけのものは実害が無いので、 ho
 
 .. code-block:: bash
 
-   $ find ./ -not \( -path './howto/*' -o -path './technical/*' -o -path './RelNotes/*' \) -name "*.po" | xargs grep -n  -P '`(?:[^` ]+(?:[][<>]|\s)+){1,}[^` ]+`' | wc -l
+   $ find ./ -not \( -path './howto/*' -o -path './technical/*' -o -path './RelNotes/*' \) -name "*.po" | xargs grep -n  -P '`(?:[^` ]+(?:[][<>()]|\s)+){1,}[^` ]+`' | wc -l
    6636
 
 おおよそ、 この半分ぐらい？
@@ -95,7 +124,7 @@ info 生成しない、 html 文書だけのものは実害が無いので、 ho
    :name: gen-enclose-back-tick-list.sh
 
    #!/bin/sh
-   find ./ -not \( -path './howto/*' -o -path './technical/*' -o -path './RelNotes/*' \) -name "*.po" | xargs grep -c  -P '`(?:[^` ]+(?:[][<>]|\s)+){1,}[^` ]+`' | sort | gawk 'BEGIN{FS=":"; print "# -*- mode: org -*-"; print "# please see gen-enclose-back-tick-list.sh"; print "# toggle todo C-c C-t"} $2>0 { print "* TODO " $1 "\t" $2}'
+   find ./ -not \( -path './howto/*' -o -path './technical/*' -o -path './RelNotes/*' \) -name "*.po" | xargs grep -c  -P '`(?:[^` ]+(?:[][<>()]|\s)+){1,}[^` ]+`' | sort | gawk 'BEGIN{FS=":"; print "# -*- mode: org -*-"; print "# please see gen-enclose-back-tick-list.sh"; print "# toggle todo C-c C-t"} $2>0 { print "* TODO " $1 "\t" $2}'
 
 in Emacs
 
@@ -103,7 +132,7 @@ M-x grep-find
 
 .. code-block:: text
 
-   find ./ -not \( -path './howto/*' -o -path './technical/*' -o -path './RelNotes/*' \) -name "*.po" | xargs grep --color=auto -n -P '`(?:[^` ]+(?:[][<>]|\s)+){1,}[^` ]+`'
+   find ./ -not \( -path './howto/*' -o -path './technical/*' -o -path './RelNotes/*' \) -name "*.po" | xargs grep --color=auto -n -P '`(?:[^` ]+(?:[][<>()]|\s)+){1,}[^` ]+`'
 
 .. note::
 
@@ -121,7 +150,7 @@ scratch バッファで実行
 .. code-block:: elisp
 
    (progn
-     (setq re "`\\(\\(?:[^`\n ]+\\(?:[][<>]\\|\s\\)+\\)+[^`\n ]+\\)`")
+     (setq re "`\\(\\(?:[^`\n ]+\\(?:[][<>()]\\|\s\\)+\\)+[^`\n ]+\\)`")
      (setq text "便宜上、 `git blame --reverse START` は `git blame --reverse START..HEAD` と見なされます。")
      (list
        (string-match re text)
@@ -146,7 +175,7 @@ scratch バッファで実行
    
 .. code-block:: elisp
 
-   (query-replace-regexp "`\\(\\(?:[^`\n ]+\\(?:[][<>]\\|\s\\)+\\)+[^`\n ]+\\)`" "\+\\1\+")
+   (query-replace-regexp "`\\(\\(?:[^`\n ]+\\(?:[][<>()]\\|\s\\)+\\)+[^`\n ]+\\)`" "\+\\1\+")
 
 .. comments...
    そして一度実行後、 今度は M-x query-replace-regexp すると、ヒストリに上記が出てきますので、
