@@ -16,3 +16,4 @@ Contents:
 
    git-docs-ja-env
    asciidoc-back-quotes
+   asciidoc-koneta
