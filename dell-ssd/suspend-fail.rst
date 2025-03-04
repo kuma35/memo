@@ -5,12 +5,29 @@
 サスペンド後復帰できなくなる
 ============================
 
-2024年11月4日
-
-2024年11月6日 加筆
+- 2025年03月04日 加筆
+- 2024年11月6日 加筆
+- 2024年11月4日
 
 今回のSSD換装が原因かどうかわからないのですけども
 サスペンド後復帰できなくなりました。電源長押しして強制電源OFFして電源ON〜ブートするハメになります。
+
+s2idle,freeze
+-------------
+
+2025年3月4日
+
+現在のところ、これでサスペンドできています。
+
+.. code-block::
+
+   [Sleep]
+   MemorySleepMode=s2idle
+   SuspendState=freeze
+   AllowSuspend=yes
+   AllowHibernation=no
+   AllowSuspendThenHibernate=no
+   AllowHybridSleep=no
 
 ハイバネート禁止
 ----------------

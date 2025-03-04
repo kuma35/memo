@@ -18,3 +18,4 @@ Contents:
    dell-setup
    dell-ssd
    suspend-fail
+   error-grub-efi-amd64-signed
